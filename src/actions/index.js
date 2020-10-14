@@ -1,11 +1,14 @@
-const setFavorite = (payload) => ({
+export const setFavorite = (payload) => ({
   type: 'SET_FAVORITE',
   payload,
 });
 
-const deleteFavorite = (payload) => ({
+export const deleteFavorite = (payload) => ({
   type: 'DELETE_FAVORITE',
   payload,
 });
 
-export { setFavorite, deleteFavorite };
+export const loginRequest = (payload) => ({
+  type: 'LOGIN_REQUEST',
+  payload,
+});
