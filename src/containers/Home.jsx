@@ -7,33 +7,42 @@ import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
 import '../assets/styles/App.scss';
 
-const Home = ({ myList, trends, originals }) => {
+const Home = ({ myList, trends, originals, filter }) => {
+  const myListFiltered = myList.filter((item) =>
+    item.title.toLowerCase().includes(filter.toLowerCase()),
+  );
+  const trendsFiltered = trends.filter((item) =>
+    item.title.toLowerCase().includes(filter.toLowerCase()),
+  );
+  const originalsFiltered = originals.filter((item) =>
+    item.title.toLowerCase().includes(filter.toLowerCase()),
+  );
   return (
     <>
       <Header />
       <Search isHome />
-      {myList.length > 0 && (
+      {myListFiltered.length > 0 && (
         <Categories title='Mi Lista'>
           <Carousel>
-            {myList.map((item) => (
+            {myListFiltered.map((item) => (
               <CarouselItem key={item.id} {...item} isList />
             ))}
           </Carousel>
         </Categories>
       )}
-      {trends.length > 0 && (
+      {trendsFiltered.length > 0 && (
         <Categories title='Tendencias'>
           <Carousel>
-            {trends.map((item) => (
+            {trendsFiltered.map((item) => (
               <CarouselItem key={item.id} {...item} />
             ))}
           </Carousel>
         </Categories>
       )}
-      {originals.length > 0 && (
+      {originalsFiltered.length > 0 && (
         <Categories title='Originales de Platzi Videos'>
           <Carousel>
-            {originals.map((item) => (
+            {originalsFiltered.map((item) => (
               <CarouselItem key={item.id} {...item} />
             ))}
           </Carousel>
@@ -48,6 +57,7 @@ const mapStateToProps = (state) => {
     myList: state.myList,
     trends: state.trends,
     originals: state.originals,
+    filter: state.filter,
   };
 };
 

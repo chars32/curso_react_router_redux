@@ -169,6 +169,7 @@ const initialState = {
       source: 'https://mdstrm.com/video/58333e214ad055d208427db5.mp4',
     },
   ],
+  filter: '',
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
