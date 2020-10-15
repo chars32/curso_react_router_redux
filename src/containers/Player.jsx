@@ -1,5 +1,6 @@
 import React, { useLayoutEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { getVideoSource } from '../actions';
 import NotFound from './NotFound';
 import '../assets/styles/components/Player.scss';
@@ -30,6 +31,10 @@ const Player = (props) => {
   ) : (
     <NotFound />
   );
+};
+
+Player.propTypes = {
+  playing: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {

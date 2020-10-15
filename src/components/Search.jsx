@@ -1,15 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { setFilter } from '../actions';
 import '../assets/styles/components/Search.scss';
 
-const Search = ({ isHome, setFilter }) => {
+const Search = ({ isHome }) => {
   const inputStyle = classNames('input', {
     isHome,
   });
   const handleSearch = (event) => {
-    setFilter(event.target.value);
+    props.setFilter(event.target.value);
   };
   return (
     <section className='main'>
@@ -17,6 +18,10 @@ const Search = ({ isHome, setFilter }) => {
       <input type='text' className={inputStyle} placeholder='Buscar...' onChange={handleSearch} />
     </section>
   );
+};
+
+Search.propTypes = {
+  isHome: PropTypes.bool,
 };
 
 const mapDispatchToProps = {
